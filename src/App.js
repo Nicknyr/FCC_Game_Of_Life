@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Square from './Square.js';
 
 class App extends Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      boardHeight: 10,
+      boardWidth: 50
+    };
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <table className="table-board"></table>
+          <tbody>
+            {Array(this.state.boardHeight).fill(1).map((el, i) => {
+              return (
+                <Square key={i} />
+              );
+            })}
+          </tbody>
       </div>
     );
   }

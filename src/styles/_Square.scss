@@ -1,0 +1,12 @@
+
+.Square {
+  background-color: #D3D3D3;
+  height: 25px;
+  width: 25px;
+  border: 2px solid black;
+  overflow: none;
+
+  &:hover {
+    background-color: green;
+  }
+}
