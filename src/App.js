@@ -13,17 +13,25 @@ class App extends Component {
     };
   }
 
+
   render() {
     return (
       <div>
-        <table className="table-board"></table>
+        <table className="table-board">
           <tbody>
             {Array(this.state.boardHeight).fill(1).map((el, i) => {
               return (
-                <Square key={i} />
+                <tr key={i}>
+                  {Array(this.state.boardWidth).fill(1).map((el, j) => {
+                    return (
+                      <Square key={j} />
+                    );
+                  })}
+                </tr>
               );
             })}
           </tbody>
+         </table>
       </div>
     );
   }
