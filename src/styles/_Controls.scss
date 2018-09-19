@@ -1,0 +1,36 @@
+
+.controls {
+  margin-top: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3em;
+  height: 15em;
+  width: 25em;
+  background-color: #013243;
+  color: snow;
+
+  h2 {
+    text-align: center;
+    padding: 1em;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    padding: 1em;
+    font-weight: bolder;
+    text-transform: uppercase;
+  }
+
+  button {
+    //background-color:  #48dbfb;
+    border: 1px solid snow;
+    margin-left: .5em;
+    margin-right: .5em;
+    height: 2em;
+    width: 6em;
+    text-transform: uppercase;
+    //font-weight: bold;
+  
+  }
+}

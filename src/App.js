@@ -1,37 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Square from './Square.js';
+import GameBoard from './GameBoard.js';
+import Controls from './Controls.js';
 
 class App extends Component {
   constructor(props){
     super(props);
 
     this.state = {
-      boardHeight: 10,
-      boardWidth: 50
+      boardHeight: 50,
+      boardWidth: 30,
+      iterations: 10,
+      reset: false
     };
+  }
+
+  selectBoardSize = (width, height) => {
+    this.setState({
+      boardHeight: height,
+      boardWidth: width
+    });
+  }
+
+  onReset = () => {
+
   }
 
 
   render() {
     return (
-      <div>
-        <table className="table-board">
-          <tbody>
-            {Array(this.state.boardHeight).fill(1).map((el, i) => {
-              return (
-                <tr key={i}>
-                  {Array(this.state.boardWidth).fill(1).map((el, j) => {
-                    return (
-                      <Square key={j} />
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-         </table>
+      <div className="container">
+        <h1>Conway's Game of Life</h1>
+
+      <GameBoard
+        height={this.state.boardHeight}
+        width={this.state.boardWidth}
+        alive={this.alive}
+      />
+
+        <Controls
+          selectBoardSize={this.selectBoardSize}
+          iterations={this.state.iterations}
+          onReset={this.onReset}
+        />
+
       </div>
     );
   }
