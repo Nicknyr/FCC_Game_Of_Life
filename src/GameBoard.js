@@ -11,7 +11,7 @@ const GameBoard = (props) => {
                 <tr key={i}>
                   {Array(props.width).fill(1).map((el, j) => {
                     return (
-                      <Square key={j} alive={props.alive}/>
+                      <Square key={j} alive={props.alive} reset={props.reset}/>
                     );
                   })}
                 </tr>

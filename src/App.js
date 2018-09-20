@@ -12,6 +12,7 @@ class App extends Component {
       boardWidth: 30,
       iterations: 10,
       reset: false
+      //alive: false
     };
   }
 
@@ -22,9 +23,17 @@ class App extends Component {
     });
   }
 
-  onReset = () => {
-
+/*  onReset = () => {
+    this.setState({ reset: !this.state.reset });
+    console.log("onReset triggered");
   }
+*/
+
+/*
+  alive = () => {
+    this.setState({ alive: !this.state.alive });
+  }
+*/
 
 
   render() {
@@ -36,6 +45,7 @@ class App extends Component {
         height={this.state.boardHeight}
         width={this.state.boardWidth}
         alive={this.alive}
+        reset={this.onReset}
       />
 
         <Controls

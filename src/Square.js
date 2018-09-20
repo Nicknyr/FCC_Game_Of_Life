@@ -13,6 +13,7 @@ class Square extends Component {
     this.setState({ alive: !this.state.alive });
   }
 
+
   render(){
     return (
         <td  className={`Square ${this.state.alive ? "active" : "inactive"}`}  onClick={() => this.alive()}></td>
