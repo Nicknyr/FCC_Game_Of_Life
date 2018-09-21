@@ -20,6 +20,7 @@ class App extends Component {
     this.state.board = new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0));
   }
 
+  // Allows user to click button and change size of game board
   selectBoardSize = (width, height) => {
     this.setState({
       boardHeight: height,
@@ -28,27 +29,20 @@ class App extends Component {
     });
   }
 
-/*  componentDidMount = () => {
-    this.setState({
-    board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0))
-    })
-  }
-*/
-/*  onReset = () => {
-    this.setState({ reset: !this.state.reset });
+  // Resets game board back to blank when user clicks reset button
+  onReset = () => {
+    //this.setState({ reset: !this.state.reset });
     console.log("onReset triggered");
+    this.setState({ board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0)) })
   }
-*/
 
 
-  alive = (x, y) => {
-    console.log(x, y);
 
+  // Called when user clicks on specific square. Changes color of square depending on if it's alive or not
+  isSquareAlive = (x, y) => {
     const data = this.state.board;
     const ySquare = y;
     const xSquare = x;
-    console.log("X square is : " + xSquare);
-    console.log("Y square is : " + ySquare);
 
     const newData = data.map((row, y) => {
       return y === ySquare ? (
@@ -75,7 +69,7 @@ class App extends Component {
         width={this.state.boardWidth}
         reset={this.onReset}
         board={this.state.board}
-        alive={this.alive}
+        alive={this.isSquareAlive}
         isAlive={this.state.alive}
       />
 
