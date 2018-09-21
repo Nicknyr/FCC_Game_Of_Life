@@ -14,7 +14,8 @@ class App extends Component {
       iterations: 10,
       reset: false,
       alive: false,
-      board: []
+      board: [],
+      randomNum: ''
     };
 
     this.state.board = new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0));
@@ -34,6 +35,18 @@ class App extends Component {
     //this.setState({ reset: !this.state.reset });
     console.log("onReset triggered");
     this.setState({ board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0)) })
+  }
+
+  getRandomNumber = (max) => {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+  componentDidMount = (max) => {
+    const number = this.getRandomNumber(2);
+    
+    this.setState({
+      randomNum: number
+    });
   }
 
 
@@ -59,7 +72,7 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.board);
+    console.log('Random number is : ' + this.state.randomNum);
     return (
       <div className="container">
         <h1>Conway's Game of Life</h1>
