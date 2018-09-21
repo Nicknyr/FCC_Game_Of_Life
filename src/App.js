@@ -50,9 +50,15 @@ class App extends Component {
     console.log("X square is : " + xSquare);
     console.log("Y square is : " + ySquare);
 
-    const updateData = update(data, {
-      xSquare: {$set: this.setState({ alive: !this.state.alive })}
-    });
+    const newData = data.map((row, y) => {
+      return y === ySquare ? (
+        row.map((cell, x) => x === xSquare ? (cell + 1) % 2 : cell)
+      ) : (
+        row
+      )
+    })
+
+    this.setState({ board: newData });
 
   }
 
