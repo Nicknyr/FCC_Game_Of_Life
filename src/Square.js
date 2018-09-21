@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Square extends Component {
+/*class Square extends Component {
   constructor(props) {
     super(props);
 
@@ -19,12 +19,12 @@ class Square extends Component {
         <td  className={`Square ${this.state.alive ? "active" : "inactive"}`}  onClick={() => this.alive()}></td>
     );
   }
-}
-
-/*const Square = (props) => {
-  return (
-    <td  className={`Square ${props.alive ? "active" : "inactive"}`}  onClick={() => props.alive()}></td>
-  );
 }*/
+
+const Square = (props) => {
+  return (
+    <td  className={`Square ${props.isAlive ? "active" : "inactive"}`}  onClick={() => props.aliveCallback(props.x, props.y)}></td>
+  );
+}
 
 export default Square;

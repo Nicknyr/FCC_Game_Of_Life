@@ -2,25 +2,29 @@ import React, { Component } from 'react';
 import Square from './Square.js';
 
 const GameBoard = (props) => {
-    return (
-      <div>
-        <table className="game-board">
-          <tbody>
-            {Array(props.height).fill(1).map((el, i) => {
-              return (
-                <tr key={i}>
-                  {Array(props.width).fill(1).map((el, j) => {
-                    return (
-                      <Square key={j} alive={props.alive} reset={props.reset}/>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-         </table>
-      </div>
-    );
+  return (
+    <div>
+      <table className="game-board">
+        <tbody>
+          {props.board.map((row, y) => {
+            return <tr key={y}>
+              {row.map((ea, x) => {
+                return (
+                  <Square
+                    key={x}
+                    x={x}
+                    y={y}
+                    isAlive={ea}
+                    aliveCallback={props.alive}
+                  />
+                );
+              })}
+            </tr>;
+          })}
+        </tbody>
+       </table>
+    </div>
+  );
 }
 
 export default GameBoard;
