@@ -3,6 +3,7 @@ import './App.css';
 import GameBoard from './GameBoard.js';
 import Controls from './Controls.js';
 import update from 'immutability-helper';
+import Info from './Info.js';
 
 class App extends Component {
   constructor(props){
@@ -32,20 +33,22 @@ class App extends Component {
 
   // Resets game board back to blank when user clicks reset button
   onReset = () => {
-    //this.setState({ reset: !this.state.reset });
-    console.log("onReset triggered");
     this.setState({ board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0)) })
   }
 
+  // Generates random number
   getRandomNumber = (max) => {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-  componentDidMount = (max) => {
+
+  componentDidMount = () => {
+    // Stores random number 1 or 2
     const number = this.getRandomNumber(2);
-    
+
     this.setState({
-      randomNum: number
+      //randomNum: number
+      board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(number))
     });
   }
 
@@ -74,9 +77,9 @@ class App extends Component {
   render() {
     console.log('Random number is : ' + this.state.randomNum);
     return (
-      <div className="container">
-        <h1>Conway's Game of Life</h1>
-
+      <div>
+      <div className="game-container">
+    
       <GameBoard
         height={this.state.boardHeight}
         width={this.state.boardWidth}
@@ -92,6 +95,11 @@ class App extends Component {
         onReset={this.onReset}
       />
 
+      </div>
+
+      <div className="info-container">
+        <Info />
+      </div>
       </div>
     );
   }
