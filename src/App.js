@@ -19,7 +19,6 @@ class App extends Component {
       randomNum: ''
     };
 
-    //this.state.board = new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0));
     this.state.board = Array(this.state.boardHeight).fill(0).map(_ =>
                         Array(this.state.boardWidth).fill(0));
   }
@@ -29,42 +28,66 @@ class App extends Component {
     this.setState({
       boardHeight: height,
       boardWidth: width,
-      //board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0))
       board: Array(this.state.boardHeight).fill(0).map(_ =>
               Array(this.state.boardWidth).fill(0))
     });
+    this.onChangeBoardSize();
   }
 
-  // Resets game board back to blank when user clicks reset button
-  onReset = () => {
-    this.setState({
-      //board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0)) }
-      board: Array(this.state.boardHeight).fill(0).map(_ =>
-              Array(this.state.boardWidth).fill(0))
-    });
-  }
-
-  // Generates random number
-  getRandomNumber = (max) => {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-
-  // This is the function I am trying to build and generate a random starting game board with
-  componentDidMount = () => {
+  onChangeBoardSize = () => {
+    const height = this.state.boardHeight;
+    const width = this.state.boardWidth;
     const data = this.state.board;
-
     // Creates random decimal number between 0 and 1
     const startingBoard = data.map(a => a.map(Math.random));
     // Rounds decimal numbers to either 0 or 1 so the grid can display whether the cell is alive or dead
     const rounded = startingBoard.map(a => a.map(Math.round));
 
-    console.log('Starting board contains ' + rounded);
+    this.setState({
+       boardHeight: height,
+       boardWidth: width,
+       board: rounded
+    });
+
+  }
+
+  // Resets game board back to blank when user clicks reset button
+  onReset = () => {
+    this.setState({
+      board: Array(this.state.boardHeight).fill(0).map(_ =>
+              Array(this.state.boardWidth).fill(0))
+    });
+  }
+
+  // Creates random board when the user loads the page
+  componentDidMount = () => {
+    const data = this.state.board;
+    // Creates random decimal number between 0 and 1
+    const startingBoard = data.map(a => a.map(Math.random));
+    // Rounds decimal numbers to either 0 or 1 so the grid can display whether the cell is alive or dead
+    const rounded = startingBoard.map(a => a.map(Math.round));
 
     this.setState({
        board: rounded
     });
   }
 
+/*  componentDidUpdate = (prevProps) => {
+    const data = this.state.board;
+    // Creates random decimal number between 0 and 1
+    const startingBoard = data.map(a => a.map(Math.random));
+    // Rounds decimal numbers to either 0 or 1 so the grid can display whether the cell is alive or dead
+    const rounded = startingBoard.map(a => a.map(Math.round));
+
+    console.log('Previous props is : ' + prevProps);
+
+    if(this.state.data !== prevProps.data) {
+      this.setState({
+         board: prevProps.data
+      });
+    }
+  }
+*/
 
 
   // Called when user clicks on specific square. Changes color of square depending on if it's alive or not

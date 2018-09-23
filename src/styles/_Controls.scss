@@ -6,31 +6,49 @@
   margin-bottom: 3em;
   height: 15em;
   width: 25em;
-  background-color: #013243;
+  background-color: #2e3131;//#22313f;//#24252a;//#013243;
   color: snow;
+  box-shadow: 4px 4px 5px 2px black;
+
+  .controls-section {
+    //background-color: red;
+    margin-bottom: 1em;
+
+    p {
+      display: inline-block;
+    }
+  }
 
   h2 {
     text-align: center;
-    padding: 1em;
+    padding: 1.5em;
     font-weight: bolder;
     text-transform: uppercase;
   }
 
   h3 {
-    padding: 1em;
+    padding: .2em;
     font-weight: bolder;
+    display: inline-block;
     text-transform: uppercase;
   }
 
   button {
-    //background-color:  #48dbfb;
-    border: 1px solid snow;
+    background-color:  #29f1c3;//#48dbfb;
+    //border: 1px solid snow;
+    border: none;
     margin-left: .5em;
     margin-right: .5em;
     height: 2em;
     width: 6em;
     text-transform: uppercase;
     //font-weight: bold;
-  
+  }
+
+  .reset-button {
+    margin-top: 3em;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
   }
 }

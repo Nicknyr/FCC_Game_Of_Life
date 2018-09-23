@@ -72,7 +72,8 @@ table {
 .game-board {
   margin-top: 2em;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  box-shadow: 4px 4px 5px 2px black; }
 
 .controls {
   margin-top: 3em;
@@ -81,37 +82,57 @@ table {
   margin-bottom: 3em;
   height: 15em;
   width: 25em;
-  background-color: #013243;
-  color: snow; }
+  background-color: #2e3131;
+  color: snow;
+  box-shadow: 4px 4px 5px 2px black; }
+  .controls .controls-section {
+    margin-bottom: 1em; }
+    .controls .controls-section p {
+      display: inline-block; }
   .controls h2 {
     text-align: center;
-    padding: 1em;
+    padding: 1.5em;
     font-weight: bolder;
     text-transform: uppercase; }
   .controls h3 {
-    padding: 1em;
+    padding: .2em;
     font-weight: bolder;
+    display: inline-block;
     text-transform: uppercase; }
   .controls button {
-    border: 1px solid snow;
+    background-color: #29f1c3;
+    border: none;
     margin-left: .5em;
     margin-right: .5em;
     height: 2em;
     width: 6em;
     text-transform: uppercase; }
+  .controls .reset-button {
+    margin-top: 3em;
+    margin-right: auto;
+    margin-left: auto;
+    display: block; }
 
 .game-container {
-  width: 70%;
-  float: left; }
+  width: 100%; }
   .game-container h1 {
     text-align: center; }
 
 .info-section {
-  background-color: #34495e;
+  background-color: #2e3131;
   height: auto;
-  width: 30%;
   color: snow;
-  float: right; }
+  font-size: .9em; }
+  .info-section .video-section {
+    text-align: center;
+    padding: 3em; }
+  .info-section .section {
+    height: 40em;
+    background-color: #2e3131;
+    width: 33.3%;
+    float: left; }
+  .info-section h2, .info-section h3 {
+    color: #29f1c3; }
   .info-section h2 {
     text-align: center;
     padding: 1.5em;
