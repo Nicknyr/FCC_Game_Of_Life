@@ -19,7 +19,9 @@ class App extends Component {
       randomNum: ''
     };
 
-    this.state.board = new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0));
+    //this.state.board = new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0));
+    this.state.board = Array(this.state.boardHeight).fill(0).map(_ =>
+                        Array(this.state.boardWidth).fill(0));
   }
 
   // Allows user to click button and change size of game board
@@ -27,13 +29,19 @@ class App extends Component {
     this.setState({
       boardHeight: height,
       boardWidth: width,
-      board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0))
+      //board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0))
+      board: Array(this.state.boardHeight).fill(0).map(_ =>
+              Array(this.state.boardWidth).fill(0))
     });
   }
 
   // Resets game board back to blank when user clicks reset button
   onReset = () => {
-    this.setState({ board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0)) })
+    this.setState({
+      //board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(0)) }
+      board: Array(this.state.boardHeight).fill(0).map(_ =>
+              Array(this.state.boardWidth).fill(0))
+    });
   }
 
   // Generates random number
@@ -41,14 +49,17 @@ class App extends Component {
     return Math.floor(Math.random() * Math.floor(max));
   }
 
-
+  // This is the function I am trying to build and generate a random starting game board with
   componentDidMount = () => {
-    // Stores random number 1 or 2
-    const number = this.getRandomNumber(2);
+    const data = this.state.board;
 
+    const startingBoard = data.map(a => a.map(Math.random));
+
+    console.log('Starting board contains ' + startingBoard);
+
+    // After startingBoard is working I can set state with startingBoard
     this.setState({
-      //randomNum: number
-      board: new Array(this.state.boardHeight).fill(new Array(this.state.boardWidth).fill(number))
+       board: startingBoard
     });
   }
 
@@ -75,11 +86,11 @@ class App extends Component {
 
 
   render() {
-    console.log('Random number is : ' + this.state.randomNum);
+    /*console.log('Random number is : ' + this.state.randomNum);*/
     return (
       <div>
       <div className="game-container">
-    
+
       <GameBoard
         height={this.state.boardHeight}
         width={this.state.boardWidth}
