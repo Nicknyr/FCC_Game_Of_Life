@@ -53,13 +53,15 @@ class App extends Component {
   componentDidMount = () => {
     const data = this.state.board;
 
+    // Creates random decimal number between 0 and 1
     const startingBoard = data.map(a => a.map(Math.random));
+    // Rounds decimal numbers to either 0 or 1 so the grid can display whether the cell is alive or dead
+    const rounded = startingBoard.map(a => a.map(Math.round));
 
-    console.log('Starting board contains ' + startingBoard);
+    console.log('Starting board contains ' + rounded);
 
-    // After startingBoard is working I can set state with startingBoard
     this.setState({
-       board: startingBoard
+       board: rounded
     });
   }
 
