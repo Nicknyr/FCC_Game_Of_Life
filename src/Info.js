@@ -5,7 +5,7 @@ const Info = () => {
     <div className="info-section">
       <h2>John Conway's Game of Life</h2>
         <div className="video-section">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/E8kUJL04ELA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/E8kUJL04ELA" frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
         </div>
       <div className="section">
         <h3>About the Game</h3>

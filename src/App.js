@@ -31,12 +31,10 @@ class App extends Component {
       board: Array(this.state.boardHeight).fill(0).map(_ =>
               Array(this.state.boardWidth).fill(0))
     });
-    this.onChangeBoardSize();
+      {/*this.onChangeBoardSize(width, height);*/}
   }
 
-  onChangeBoardSize = () => {
-    const height = this.state.boardHeight;
-    const width = this.state.boardWidth;
+/*  onChangeBoardSize = (width, height) => {
     const data = this.state.board;
     // Creates random decimal number between 0 and 1
     const startingBoard = data.map(a => a.map(Math.random));
@@ -48,8 +46,8 @@ class App extends Component {
        boardWidth: width,
        board: rounded
     });
-
   }
+*/
 
   // Resets game board back to blank when user clicks reset button
   onReset = () => {
@@ -72,22 +70,33 @@ class App extends Component {
     });
   }
 
-/*  componentDidUpdate = (prevProps) => {
-    const data = this.state.board;
-    // Creates random decimal number between 0 and 1
-    const startingBoard = data.map(a => a.map(Math.random));
-    // Rounds decimal numbers to either 0 or 1 so the grid can display whether the cell is alive or dead
-    const rounded = startingBoard.map(a => a.map(Math.round));
+  // Attempts to fill board with random alive squares when user resizes the size of the board via onClick/selectBoardSize()
+  componentDidUpdate = (prevProps, prevState) => {
+    console.log('PrevState is : ' + prevProps, prevState);
 
-    console.log('Previous props is : ' + prevProps);
+    // Attempts to update board height and width and then popular board with random "alive" squares
+    if(this.state.boardWidth !== prevState.boardWidth) {
+      if(this.state.boardHeight !== prevState.boardHeight) {
+        // Console.log runs, if statements equate to true when user resizes board
+        console.log('Nested if statements in componentDidUpdate triggered');
 
-    if(this.state.data !== prevProps.data) {
-      this.setState({
-         board: prevProps.data
-      });
+        const boardWidth = this.state.boardWidth;
+        const boardHeight = this.state.boardHeight;
+        const data = this.state.board;
+        // Creates random decimal number between 0 and 1
+        const startingBoard = data.map(a => a.map(Math.random));
+        // Rounds decimal numbers to either 0 or 1 so the grid can display whether the cell is alive or dead
+        const rounded = startingBoard.map(a => a.map(Math.round));
+
+        this.setState({
+          boardWidth: boardWidth,
+          boardHeight: boardHeight,
+          board: rounded
+        })
+      }
     }
   }
-*/
+
 
 
   // Called when user clicks on specific square. Changes color of square depending on if it's alive or not
