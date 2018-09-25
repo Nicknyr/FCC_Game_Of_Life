@@ -23,7 +23,7 @@ class App extends Component {
                         Array(this.state.boardWidth).fill(0));
   }
 
-  // Allows user to click button and change size of game board
+/*  // Allows user to click button and change size of game board
   selectBoardSize = (width, height) => {
     this.setState({
       boardHeight: height,
@@ -31,11 +31,12 @@ class App extends Component {
       board: Array(this.state.boardHeight).fill(0).map(_ =>
               Array(this.state.boardWidth).fill(0))
     });
-      {/*this.onChangeBoardSize(width, height);*/}
+      this.onChangeBoardSize(width, height);
   }
+*/
 
-/*  onChangeBoardSize = (width, height) => {
-    const data = this.state.board;
+  onChangeBoardSize = (width, height) => {
+    const data = Array(height).fill(0).map(_ => Array(width).fill(0));
     // Creates random decimal number between 0 and 1
     const startingBoard = data.map(a => a.map(Math.random));
     // Rounds decimal numbers to either 0 or 1 so the grid can display whether the cell is alive or dead
@@ -47,7 +48,7 @@ class App extends Component {
        board: rounded
     });
   }
-*/
+
 
   // Resets game board back to blank when user clicks reset button
   onReset = () => {
@@ -70,7 +71,7 @@ class App extends Component {
     });
   }
 
-  // Attempts to fill board with random alive squares when user resizes the size of the board via onClick/selectBoardSize()
+/*  // Attempts to fill board with random alive squares when user resizes the size of the board via onClick/selectBoardSize()
   componentDidUpdate = (prevProps, prevState) => {
     console.log('PrevState is : ' + prevProps, prevState);
 
@@ -96,7 +97,7 @@ class App extends Component {
       }
     }
   }
-
+*/
 
 
   // Called when user clicks on specific square. Changes color of square depending on if it's alive or not
@@ -135,7 +136,7 @@ class App extends Component {
       />
 
       <Controls
-        selectBoardSize={this.selectBoardSize}
+        onChangeBoardSize={this.onChangeBoardSize}
         iterations={this.state.iterations}
         onReset={this.onReset}
       />
