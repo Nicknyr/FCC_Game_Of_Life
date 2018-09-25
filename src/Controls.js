@@ -7,9 +7,9 @@ const Controls = (props) => {
         <h2>Controls</h2>
         <div className="controls-section">
           <h3>Board Size:</h3>
-          <button onClick={() => {props.onChangeBoardSize(30, 50)}}>Small</button>
-          <button onClick={() => {props.onChangeBoardSize(50, 50)}}>Medium</button>
-          <button onClick={() => {props.onChangeBoardSize(70, 50)}}>Large</button>
+          <button onClick={() => {props.onChangeBoardSize(30, 30)}}>Small</button>
+          <button onClick={() => {props.onChangeBoardSize(50, 30)}}>Medium</button>
+          <button onClick={() => {props.onChangeBoardSize(70, 30)}}>Large</button>
         </div>
         <div className="controls-section">
           <h3>Iterations:</h3>
