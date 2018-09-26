@@ -59,10 +59,11 @@ class App extends Component {
     this.setState({
        board: rounded
     });
+    this.rulesApplied();
+
   }
 
-  timer = (height, width) => {
-    console.log('This is the timer function being called');
+  timer = () => {
     const data = this.state.board;
     // Creates random decimal number between 0 and 1
     const startingBoard = data.map(a => a.map(Math.random));
@@ -72,6 +73,20 @@ class App extends Component {
     this.setState({
        board: rounded
     });
+  }
+
+  // Applies Game of Life rules and determines which squares stay alive and which don't
+  rulesApplied = () => {
+    const data = this.state.board;
+    //const nextRound = data.map(a => a.map(a));
+
+    console.log(data);
+
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    console.log('PrevState is : ' + prevProps, prevState);
+
   }
 
   // Called when user clicks on specific square. Changes color of square depending on if it's alive or not
