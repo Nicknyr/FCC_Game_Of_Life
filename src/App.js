@@ -50,7 +50,7 @@ class App extends Component {
 
   // Creates random board when the user loads the page
   componentDidMount = () => {
-    setInterval(this.timer, 2000);
+    setInterval(this.timer, 1000);
     const data = this.state.board;
     // Creates random decimal number between 0 and 1
     const startingBoard = data.map(a => a.map(Math.random));
@@ -76,27 +76,30 @@ class App extends Component {
     });
   }
 
-/*  // Should apply Game of Life rules and decide with squares are alive/dead every time the board is updated
+  // Should apply Game of Life rules and decide with squares are alive/dead every time the board is updated
   componentDidUpdate = (prevProps, prevState) => {
     //console.log('PrevState is : ' + prevProps, prevState);
     const oldBoard = this.state.board;
     const newBoard = this.state.nextBoard;
-    const xAxis = this.state.boardHeight;
-    const yAxis = this.state.boardWidth;
 
-    // Checks that board has changed and prevents infinite loop in componentDidUpdate
+    console.log('oldBoard ' + oldBoard);
+    console.log('newBoard ' + newBoard);
+
+/*    // Checks that board has changed and prevents infinite loop in componentDidUpdate
       for(let x = 0; x < this.state.boardHeight; x++) {
         for(let y = 0; y < this.state.boardWidth; y++) {
           let neighborCount = 0;
           // Game of Life logic pertaining to squares being alive/dead
-          neighborCount += xAxis[x - 1], yAxis[y - 1];
-          neighborCount += xAxis[x], yAxis[y - 1];
-          neighborCount += xAxis[x + 1], yAxis[y - 1];
-          neighborCount += xAxis[x - 1], yAxis[y];
-          neighborCount += xAxis[x + 1], yAxis[y];
-          neighborCount += xAxis[x - 1], yAxis[y + 1];
-          neighborCount += xAxis[x], yAxis[y + 1];
-          neighborCount += xAxis[x + 1], yAxis[y + 1];
+          neighborCount += oldBoard[x - 1][y - 1];
+          neighborCount += oldBoard[x][y - 1];
+          neighborCount += oldBoard[x + 1][y - 1];
+          neighborCount += oldBoard[x - 1][y];
+          neighborCount += oldBoard[x + 1][y];
+          neighborCount += oldBoard[x - 1][y + 1];
+          neighborCount += oldBoard[x][y + 1];
+          neighborCount += oldBoard[x + 1][y + 1];
+
+          console.log('neighborCount ' + neighborCount[x]);
 
           // If square has 2 live neighbors it stays alive
           if(neighborCount == 2) {
@@ -113,14 +116,14 @@ class App extends Component {
         }
       }
 
-      if(newBoard !== prevProps && newBoard !== prevState) {
+      if(newBoard !== oldBoard) {
         // after applying rules set the nextBoard
         this.setState({ board: newBoard });
       }
-
+      */
 
   }
-  */
+
 
   // Called when user clicks on specific square. Changes color of square depending on if it's alive or not
   isSquareAlive = (x, y) => {
