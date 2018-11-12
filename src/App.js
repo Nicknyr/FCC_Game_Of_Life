@@ -76,18 +76,19 @@ class App extends Component {
     });
   }
 
+  /*
   // Should apply Game of Life rules and decide with squares are alive/dead every time the board is updated
   componentDidUpdate = (prevProps, prevState) => {
-    //console.log('PrevState is : ' + prevProps, prevState);
+    console.log('PrevState is : ' + prevProps, prevState);
     const oldBoard = this.state.board;
     const newBoard = this.state.nextBoard;
+    const height = this.state.boardHeight;
+    const width = this.state.boardWidth;
 
-    console.log('oldBoard ' + oldBoard);
-    console.log('newBoard ' + newBoard);
-
-/*    // Checks that board has changed and prevents infinite loop in componentDidUpdate
-      for(let x = 0; x < this.state.boardHeight; x++) {
-        for(let y = 0; y < this.state.boardWidth; y++) {
+   // Checks that board has changed and prevents infinite loop in componentDidUpdate
+      for(let x = 0; x < height; x++) {
+        for(let y = 0; y < width; y++) {
+          // console.log('oldBoard x and y  ' + oldBoard[x][y]);
           let neighborCount = 0;
           // Game of Life logic pertaining to squares being alive/dead
           neighborCount += oldBoard[x - 1][y - 1];
@@ -98,31 +99,31 @@ class App extends Component {
           neighborCount += oldBoard[x - 1][y + 1];
           neighborCount += oldBoard[x][y + 1];
           neighborCount += oldBoard[x + 1][y + 1];
-
-          console.log('neighborCount ' + neighborCount[x]);
+          
 
           // If square has 2 live neighbors it stays alive
           if(neighborCount == 2) {
             newBoard[x][y] = oldBoard[x][y];
           }
+        
           // If square has exactly 3 neighbors a new life square is born
           else if (neighborCount == 3) {
             newBoard[x][y] = 1;
           }
+        
           // Is square has more than 3 live neighbors it dies
           else if(neighborCount > 3){
             newBoard[x][y] = 0;
-          }
+          } 
         }
       }
-
       if(newBoard !== oldBoard) {
         // after applying rules set the nextBoard
         this.setState({ board: newBoard });
       }
-      */
 
   }
+*/
 
 
   // Called when user clicks on specific square. Changes color of square depending on if it's alive or not
